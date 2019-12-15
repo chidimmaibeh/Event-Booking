@@ -46,6 +46,9 @@ export class HomePage {
     let message = "Member - Name: " + member.name + "-Business: " + member.business;
     let subject = "Shared via Event Booking app";
     
+     /**
+  * Cordova Plugin 
+  */
     this.socialSharing.share(message, subject).then(() => {
       // Sharing via email is possible
       console.log("Shared successfully!");
