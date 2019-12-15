@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar color= "purple">
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <h3 class="no-member" text-center *ngIf="loadMembers().length === 0">
+      No Members available on the list!
+  </h3>
+  <ion-list  >
+      <ion-item-sliding *ngFor="let member of loadMembers(); let i = index">
+        <ion-item>
+          <h2>{{member.name}}</h2>
+          <p>{{member.business}}</p>
+        </ion-item>
+        <ion-item-options>
+          <button (click)="removeMember(member, i)" ion-button color="primary" icon-start>
+            <ion-icon name="trash"></ion-icon>
+            Delete
+          </button>
+          <button (click)="editMember(member, i)" ion-button color="secondary" icon-start>
+            <ion-icon name="create"></ion-icon>
+            Edit
+          </button>
+          <button (click)="shareMember(member, i)" ion-button color="dark" icon-start>
+            <ion-icon name="share"></ion-icon>
+            Share
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab bottom right>
+    <button color= "purple" (click)="addMember(member)" ion-fab mini>
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>
